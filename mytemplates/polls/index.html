@@ -1,0 +1,17 @@
+{% extends "base1.html" %}
+
+{% block main %}
+ <h3> Choose a Poll </h3>
+	{% if latest_poll_list %}
+	<div>
+	    <ul class="nav nav-tabs nav-stacked">
+	    {% for poll in latest_poll_list %}
+	        <li><a href="/polls/{{ poll.id }}/">{{ poll.question }}</a></li>
+	    {% endfor %}
+	    </ul>
+	</div>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+{% endblock %}
+

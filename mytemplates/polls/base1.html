@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+   <!-- <link rel="stylesheet" type="text/css" href="{{STATIC_ROOT}}/media/stylesheets/mystyle.css"> -->
+   <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/reset-fonts-grids/reset-fonts-grids.css">
+  <link href="{{STATIC_ROOT}}/media/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link href="{{STATIC_ROOT}}/media/stylesheets/mystyle1.css" rel="stylesheet">
+
+  <title>{% block title %} Guava Orchard {{ version }}{% endblock %}</title>
+</head>
+
+<body>
+  <body>
+  <div id="doc" class="yui-t4">
+
+    <div id="hd">
+
+      <a href= "/blog/"><img align="center" src="{{STATIC_ROOT}}/media/images/banner.jpg">
+      </a>
+  
+    </div>
+ 
+    <div id="bd" class = "container">
+        <div id="cd">
+          {% block main %}{% endblock %}
+        </div>
+    </div>
+
+    <div id="ft">
+    
+      Created with <a href="http://www.djangoproject.com/">Django</a>.<br>
+      Hosted by <a href="http://127.0.0.1:8000/">My computer for now!</a>.
+   
+    </div>
+  </div>
+
+
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="{{STATIC_ROOT}}/media/javascripts/bootstrap.min.js"></script>
+
+</body>
+</html>

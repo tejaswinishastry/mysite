@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/reset-fonts-grids/reset-fonts-grids.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="{{STATIC_ROOT}}/media/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link href="{{STATIC_ROOT}}/media/stylesheets/bootstrap-responsive.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{STATIC_ROOT}}/media/stylesheets/mystyle.css">
+
+  <title>{% block title %} Guava Orchard {{ version }}{% endblock %}</title>
+</head>
+
+<body>
+  <div id="doc" class="yui-t4 doc1">
+
+    <div id="hd">
+
+      <a href= "/blog/" ><img align="center" src="{{STATIC_ROOT}}/media/images/banner.jpg">
+      </a>
+      <h2>{% block header2 %}{% endblock %}</h2>
+    </div>
+
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          {% block main %}{% endblock %}
+        </div>
+      </div>
+    
+      <div class="yui-b" id="sidebar">
+        {% block sidebar %}
+        <h4>ABOUT</h4>
+        <p>This is my new blog created using <a href="http://www.djangoproject.com">Django</a>,
+          a <a href="http://www.python.org">Python</a> web framework. This site is under 
+          construction. My current blog is located at: 
+          <a href="http://guavaorchard.com/">guavaorchard</a>.
+        </p>
+        <br>
+        <!--<div id="vote">
+          <a class="btn btn-info" href="/polls/">Vote Here!</a>
+        </div> -->
+       
+        <h4>TAGS</h4>
+        {% for line in tag_counts %}
+            <a href="/blog/tag/{{ line.tag }}/">{{ line.tag }}</a> ({{ line.count }})<br>
+        {% endfor %}
+        <br>
+        <h4>CATEGORIES</h4>
+        {% for line in cat_counts %}
+            <a href="/blog/category/{{ line.category }}/">{{ line.category }}</a> ({{ line.count }})<br>
+        {% endfor %}
+        <br>
+        <h4>ARCHIVE</h4>
+        {% for line in archive_counts %}
+          {% if line.isyear %}
+            {% if not forloop.first %}
+              <br>
+            {% endif %}
+              <a href="/blog/{{ line.year }}/">{{ line.year }}</a> ({{ line.count }})<br>
+          {% else %}
+                <a href="/blog/{{ line.yearmonth }}/">{{ line.monthname }}</a> ({{ line.count }})<br>
+          {% endif %}
+        {% endfor %}
+        <br>
+        {% endblock %}
+      </div>
+    </div>
+
+    <div id="ft">
+      Created with <a href="http://www.djangoproject.com/">Django</a>.<br>
+      Hosted by <a href="http://127.0.0.1:8000/">My computer for now!</a>.
+    </div>
+  </div>
+
+</body>
+</html>

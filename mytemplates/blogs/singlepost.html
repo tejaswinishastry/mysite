@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+  
+
+{% block title %}
+  Guava Orchard - My Blog {{ version }}: {{ post.title }}
+{% endblock %}
+
+
+
+{# to fix IE #}
+{% block header2 %} {% endblock %}
+
+{% block main %}
+    <h3>{{ post.title }}</h3>
+    {{ post.body }}
+    <hr>
+    <div class="post_footer">
+      {% ifnotequal post.date_modified.date post.date_created.date %}
+        Last modified: {{ post.date_modified }}<br>
+      {% endifnotequal %}
+      Date created: {{ post.date_created }}<br>
+      Tags: 
+      {% for tag in post.get_tag_list %}
+        <a href="/blog/tag/{{ tag }}/">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+      {% endfor %}<br>
+      Author:
+      {{post.author.username}}
+      <div id="vote1_btn"><a id="vote1" class="btn btn-primary" href="/polls/{{ post.poll.id }}/vote/">Vote on this Post</a></div>
+    </div>
+    <br>
+{% endblock %}
